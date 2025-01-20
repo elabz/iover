@@ -38,8 +38,15 @@ spl_autoload_register(function ($class) {
     }
 });
 
+use IOVER\API\Client;
+use IOVER\Core\CORS;
+use IOVER\Core\Logger;
+use IOVER\Frontend\Form;
+use IOVER\Admin\Settings;
+
 // Initialize the plugin
 function iover_init() {
+    Logger::init();
     // Load text domain for internationalization
     load_plugin_textdomain('iover', false, dirname(plugin_basename(__FILE__)) . '/languages');
     

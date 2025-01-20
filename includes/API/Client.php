@@ -1,6 +1,8 @@
 <?php
 namespace IOVER\API;
 
+use IOVER\Core\Logger;
+
 class Client {
     private $active_api;
     private $api_key;
@@ -40,7 +42,7 @@ class Client {
         $image_data = base64_encode(file_get_contents($image_path));
         
         $payload = array(
-            'model' => 'gpt-4-vision-preview',
+            'model' => 'gpt-4o',
             'messages' => array(
                 array(
                     'role' => 'system',
@@ -71,13 +73,25 @@ class Client {
         ));
 
         if (is_wp_error($response)) {
-            throw new \Exception($response->get_error_message());
+            $error_message = $response->get_error_message();
+            Logger::log_error('OpenAI API Error', [
+                'error' => $error_message,
+                'api' => 'openai',
+                'request' => $payload
+            ]);
+            throw new \Exception($error_message);
         }
 
         $body = json_decode(wp_remote_retrieve_body($response), true);
 
         if (isset($body['error'])) {
-            throw new \Exception($body['error']['message']);
+            $error_message = $body['error']['message'];
+            Logger::log_error('OpenAI API Response Error', [
+                'error' => $error_message,
+                'api' => 'openai',
+                'response' => $body
+            ]);
+            throw new \Exception($error_message);
         }
 
         return $this->parse_response($body);
@@ -91,7 +105,7 @@ class Client {
         $image_data = base64_encode(file_get_contents($image_path));
         
         $payload = array(
-            'model' => 'claude-3-opus-20240229',
+            'model' => 'claude-3-5-sonnet-latest',
             'messages' => array(
                 array(
                     'role' => 'user',
@@ -125,13 +139,25 @@ class Client {
         ));
 
         if (is_wp_error($response)) {
-            throw new \Exception($response->get_error_message());
+            $error_message = $response->get_error_message();
+            Logger::log_error('Anthropic API Error', [
+                'error' => $error_message,
+                'api' => 'anthropic',
+                'request' => $payload
+            ]);
+            throw new \Exception($error_message);
         }
 
         $body = json_decode(wp_remote_retrieve_body($response), true);
 
         if (isset($body['error'])) {
-            throw new \Exception($body['error']['message']);
+            $error_message = $body['error']['message'];
+            Logger::log_error('Anthropic API Response Error', [
+                'error' => $error_message,
+                'api' => 'anthropic',
+                'response' => $body
+            ]);
+            throw new \Exception($error_message);
         }
 
         return $this->parse_response($body);
@@ -161,13 +187,25 @@ class Client {
         ));
 
         if (is_wp_error($response)) {
-            throw new \Exception($response->get_error_message());
+            $error_message = $response->get_error_message();
+            Logger::log_error('Ollama API Error', [
+                'error' => $error_message,
+                'api' => 'ollama',
+                'request' => $payload
+            ]);
+            throw new \Exception($error_message);
         }
 
         $body = json_decode(wp_remote_retrieve_body($response), true);
 
         if (isset($body['error'])) {
-            throw new \Exception($body['error']);
+            $error_message = $body['error'];
+            Logger::log_error('Ollama API Response Error', [
+                'error' => $error_message,
+                'api' => 'ollama',
+                'response' => $body
+            ]);
+            throw new \Exception($error_message);
         }
 
         return $this->parse_response($body);
