@@ -1,0 +1,95 @@
+.iover-form-container {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.iover-form-group {
+    margin-bottom: 1.5em;
+}
+
+.iover-form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+.iover-form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+}
+
+.iover-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.iover-response {
+    margin-top: 2em;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.iover-response h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.iover-qa-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+.iover-qa-table th,
+.iover-qa-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.iover-qa-table th {
+    background: #f5f5f5;
+    font-weight: 600;
+}
+
+.iover-error {
+    padding: 15px;
+    margin: 1em 0;
+    border-radius: 4px;
+    background: #ffe6e6;
+    color: #d63031;
+    border: 1px solid #ff9999;
+}
+
+.iover-loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.iover-loading::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: iover-spin 1s linear infinite;
+}
+
+@keyframes iover-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

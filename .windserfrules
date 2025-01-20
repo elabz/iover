@@ -1,0 +1,61 @@
+# IOver - Image Object Verification with Multimodal LLM - WordPress Plugin
+## Project Context
+Every time you choose to apply a rule(s), explicitly state the rule(s) in the output. You can abbreviate the rule description to a single word of phrase
+
+# Project Context
+A WordPress plugin allowing registered users to upload images, verify that they contain only specified objects, and send the images (along with a system prompt) to a selected AI API (OpenAI, Anthropic, or Groq, others) for multimodal inference. Responses are presented to the user in a structured Q&A format.
+
+## Code Style and Structure
+- Write concise, technical PHP / JavaScript / CSS code with accurate examples
+- Use functional and declarative programming patterns
+- Prefer iteration and modularization over code duplication
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError)
+- Structure repository files as follows:
+iover/
+├─ iover.php        // Main plugin file
+├─ includes/
+│  ├─ class-iover-settings.php         // Plugin settings class
+│  ├─ class-iover-admin.php            // Admin menu & settings page
+│  ├─ class-iover-frontend.php         // Front-end rendering & form handling
+│  └─ class-iover-api-client.php       // Handles API calls to OpenAI, Anthropic, or Groq
+├─ tests/
+│  ├─ test-plugin-activation.php       // Basic activation tests
+│  ├─ test-api-calls.php               // Unit tests for API calls
+│  ├─ test-access-control.php          // Tests for login checks
+│  └─ ...
+└─ readme.txt                          // Description & instructions for WP.org
+
+
+## Tech Stack
+- Backend: PHP (WordPress plugin API, WP HTTP API, custom classes)
+- Frontend: Gutenberg blocks, HTML/CSS
+- Testing: PHPUnit
+
+## Testing
+- Write unit tests in /tests for all new files and functions
+
+## Security
+- Implement Content Security Policy
+- Sanitize user input
+- Implement proper CORS handling
+
+## Git Usage
+Commit Message Prefixes:
+- "fix:" for bug fixes
+- "feat:" for new features
+- "perf:" for performance improvements
+- "docs:" for documentation changes
+- "style:" for formatting changes
+- "refactor:" for code refactoring
+- "test:" for adding missing tests
+- "chore:" for maintenance tasks
+Rules:
+- use lowercase for commit messages
+- keep  the summary line concise
+- Include description for non-obvious changes
+
+## Documentation
+- Maintain clear README with setup instructions
+- Document API interactions and data flows
+- Include comments for complex logic
+- Document permission requirements
