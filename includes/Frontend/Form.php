@@ -50,7 +50,7 @@ class Form {
             </form>
 
             <div id="iover-response" class="iover-response" style="display: none;">
-                <h3><?php esc_html_e('AI Response', 'iover'); ?></h3>
+                <h3><?php esc_html_e('DCBot AI Response', 'iover'); ?></h3>
                 <div class="iover-response-content"></div>
             </div>
         </div>
